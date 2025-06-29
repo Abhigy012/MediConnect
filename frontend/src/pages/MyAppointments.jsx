@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from './config/axios';
 import { toast } from 'react-toastify';
 
 const MyAppointments = () => {
@@ -12,7 +12,7 @@ const MyAppointments = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get('/api/appointments/my-appointments');
+      const response = await api.get('/appointments/my-appointments');
       setAppointments(response.data.data.appointments);
     } catch (error) {
       console.error('Error fetching appointments:', error);
@@ -28,7 +28,7 @@ const MyAppointments = () => {
     }
 
     try {
-      await axios.put(`/api/appointments/${appointmentId}/cancel`);
+      await api.put(`/appointments/${appointmentId}/cancel`);
       toast.success('Appointment cancelled successfully');
       fetchAppointments();
     } catch (error) {

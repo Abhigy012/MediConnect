@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from './config/axios';
 import React, { useContext, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
@@ -20,7 +20,7 @@ const Verify = () => {
 
         try {
 
-            const { data } = await axios.post(backendUrl + "/api/user/verifyStripe", { success, appointmentId }, { headers: { token } })
+            const { data } = await api.post('/user/verifyStripe', { success, appointmentId }, { headers: { token } })
 
             if (data.success) {
                 toast.success(data.message)

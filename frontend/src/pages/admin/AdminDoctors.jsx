@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../config/axios';
 
 const AdminDoctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -13,7 +13,7 @@ const AdminDoctors = () => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get('/api/admin/doctors');
+      const response = await api.get('/admin/doctors');
       setDoctors(response.data.data.doctors);
     } catch (error) {
       console.error('Error fetching doctors:', error);
@@ -24,7 +24,7 @@ const AdminDoctors = () => {
 
   const approveDoctor = async (doctorId, isApproved) => {
     try {
-      await axios.put(`/api/doctors/${doctorId}/approve`, { isApproved });
+      await api.put(`/doctors/${doctorId}/approve`, { isApproved });
       fetchDoctors(); // Refresh the list
     } catch (error) {
       console.error('Error approving doctor:', error);
@@ -38,7 +38,7 @@ const AdminDoctors = () => {
     }
 
     try {
-      await axios.delete(`/api/admin/doctors/${doctorId}`);
+      await api.delete(`/admin/doctors/${doctorId}`);
       fetchDoctors(); // Refresh the list
     } catch (error) {
       console.error('Error deleting doctor:', error);

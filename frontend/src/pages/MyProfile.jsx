@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import { useAuth } from '../context/AuthContext'
-import axios from 'axios'
+import api from './config/axios'
 import { toast } from 'react-toastify'
 import { assets } from '../assets/assets'
 
@@ -50,7 +50,7 @@ const MyProfile = () => {
             image && formData.append('image', image)
 
             const endpoint = user?.role === 'doctor' ? '/api/doctors/profile' : '/api/auth/profile'
-            const { data } = await axios.put(backendUrl + endpoint, formData, { headers: { token } })
+            const { data } = await api.put(endpoint, formData, { headers: { token } })
 
             if (data.success) {
                 toast.success(data.message)

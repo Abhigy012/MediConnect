@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../config/axios';
 
 const DoctorAppointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -14,7 +14,7 @@ const DoctorAppointments = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get('/api/appointments/');
+      const response = await api.get('/appointments/');
       setAppointments(response.data.data.appointments);
     } catch (error) {
       console.error('Error fetching appointments:', error);
@@ -33,7 +33,7 @@ const DoctorAppointments = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      await axios.put(`/api/appointments/${appointmentId}/status`, { status });
+      await api.put(`/appointments/${appointmentId}/status`, { status });
       setMessage({ type: 'success', text: `Appointment marked as ${status} successfully!` });
       fetchAppointments(); // Refresh the list
     } catch (error) {

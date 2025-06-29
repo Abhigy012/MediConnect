@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../config/axios';
 
 const BookAppointment = () => {
   const { doctorId } = useParams();
@@ -21,7 +21,7 @@ const BookAppointment = () => {
 
   const fetchDoctor = async () => {
     try {
-      const response = await axios.get(`/api/doctors/${doctorId}`);
+      const response = await api.get(`/doctors/${doctorId}`);
       if (
         response.data &&
         response.data.data &&
@@ -57,7 +57,7 @@ const BookAppointment = () => {
 
     try {
       setSubmitting(true);
-      const response = await axios.post('/api/appointments', {
+      const response = await api.post('/appointments', {
         doctorId,
         appointmentDate: formData.appointmentDate,
         appointmentTime: formData.appointmentTime,

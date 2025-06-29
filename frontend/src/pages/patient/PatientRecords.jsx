@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import axios from 'axios';
+import api from '../../config/axios';
 
 const PatientRecords = () => {
   const { user } = useAuth();
@@ -14,7 +14,7 @@ const PatientRecords = () => {
   const fetchRecords = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('/api/appointments');
+      const { data } = await api.get('/appointments');
       if (data.success && data.data && data.data.appointments) {
         // Only show past appointments (date < today, not cancelled)
         const now = new Date();

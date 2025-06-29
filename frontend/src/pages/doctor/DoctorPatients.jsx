@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../config/axios';
 
 const DoctorPatients = () => {
   const [patients, setPatients] = useState([]);
@@ -12,7 +12,7 @@ const DoctorPatients = () => {
 
   const fetchPatients = async () => {
     try {
-      const response = await axios.get('/api/doctors/patients');
+      const response = await api.get('/doctors/patients');
       setPatients(response.data.data.patients);
     } catch (error) {
       console.error('Error fetching patients:', error);

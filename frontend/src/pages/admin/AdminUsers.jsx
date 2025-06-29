@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../config/axios';
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -13,7 +13,7 @@ const AdminUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/api/admin/users');
+      const response = await api.get('/admin/users');
       setUsers(response.data.data.users);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -24,7 +24,7 @@ const AdminUsers = () => {
 
   const updateUserStatus = async (userId, status) => {
     try {
-      await axios.put(`/api/admin/users/${userId}/status`, { status });
+      await api.put(`/admin/users/${userId}/status`, { status });
       fetchUsers(); // Refresh the list
     } catch (error) {
       console.error('Error updating user status:', error);
@@ -38,7 +38,7 @@ const AdminUsers = () => {
     }
 
     try {
-      await axios.delete(`/api/admin/users/${userId}`);
+      await api.delete(`/admin/users/${userId}`);
       fetchUsers(); // Refresh the list
     } catch (error) {
       console.error('Error deleting user:', error);

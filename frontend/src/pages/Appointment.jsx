@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 import RelatedDoctors from '../components/RelatedDoctors'
-import axios from 'axios'
+import api from '../config/axios'
 import { toast } from 'react-toastify'
 
 const Appointment = () => {
@@ -102,7 +102,7 @@ const Appointment = () => {
 
         try {
 
-            const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { docId, slotDate, slotTime }, { headers: { token } })
+            const { data } = await api.post('/user/book-appointment', { docId, slotDate, slotTime }, { headers: { token } })
             if (data.success) {
                 toast.success(data.message)
                 getDoctosData()

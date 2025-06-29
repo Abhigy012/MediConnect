@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import api from '../../config/axios';
 
 function calculateAge(dateOfBirth) {
   if (!dateOfBirth) return '';
@@ -53,7 +53,7 @@ const PatientProfile = () => {
     setLoading(true);
 
     try {
-      const response = await axios.put('/api/auth/profile', formData);
+      const response = await api.put('/auth/profile', formData);
       if (response.data.success) {
         toast.success('Profile updated successfully!');
         if (updateUser) {
