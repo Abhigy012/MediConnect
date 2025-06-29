@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import { useAuth } from '../context/AuthContext'
-import api from './config/axios'
+import api from '../config/axios'
 import { toast } from 'react-toastify'
 import { assets } from '../assets/assets'
 

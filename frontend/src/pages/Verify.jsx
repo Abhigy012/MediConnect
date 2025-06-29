@@ -1,4 +1,4 @@
-import api from './config/axios';
+import api from '../config/axios';
 import React, { useContext, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
