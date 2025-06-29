@@ -12,7 +12,7 @@ const MyAppointments = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await api.get('/appointments/my-appointments');
+      const response = await api.get('/appointments/');
       setAppointments(response.data.data.appointments);
     } catch (error) {
       console.error('Error fetching appointments:', error);

@@ -26,8 +26,6 @@ import PatientProfile from './pages/patient/PatientProfile';
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const { user, loading } = useAuth();
 
-  console.log('🔒 ProtectedRoute check:', { user, loading, allowedRoles });
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -40,16 +38,13 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   }
 
   if (!user) {
-    console.log('❌ No user, redirecting to login');
     return <Navigate to="/login" />;
   }
 
   if (allowedRoles && !allowedRoles.includes(user.role)) {
-    console.log('❌ Role mismatch, redirecting to home. User role:', user.role, 'Allowed roles:', allowedRoles);
     return <Navigate to="/" />;
   }
 
-  console.log('✅ Access granted');
   return children;
 };
 
