@@ -32,9 +32,14 @@ const DoctorSearch = () => {
       const params = new URLSearchParams();
       if (specialization) params.append('specialization', specialization);
       if (city) params.append('city', city);
+      const requestUrl = `/api/doctors?${params}`;
+      console.log('Fetching doctors from:', requestUrl);
+      console.log('Specialization:', specialization, 'City:', city);
 
-      const response = await axios.get(`/api/doctors?${params}`);
+      const response = await axios.get(requestUrl);
       console.log('Raw API response:', response);
+      console.log('Response status:', response.status);
+      console.log('Response data:', response.data);
       
       // Handle different response structures
       let doctorsData = [];
@@ -52,7 +57,13 @@ const DoctorSearch = () => {
     } catch (error) {
       console.error('Error fetching doctors:', error);
       if (error.response) {
+        console.error('Error response status:', error.response.status);
         console.error('Error response data:', error.response.data);
+        console.error('Error response headers:', error.response.headers);
+      } else if (error.request) {
+        console.error('No response received. Error request:', error.request);
+      } else {
+        console.error('Error setting up request:', error.message);
       }
       setDoctors([]);
     } finally {
