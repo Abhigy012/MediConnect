@@ -22,9 +22,19 @@ const BookAppointment = () => {
   const fetchDoctor = async () => {
     try {
       const response = await axios.get(`/api/doctors/${doctorId}`);
-      setDoctor(response.data.data.doctor);
+      if (
+        response.data &&
+        response.data.data &&
+        response.data.data.doctor
+      ) {
+        setDoctor(response.data.data.doctor);
+      } else {
+        console.error('Doctor not found or invalid response:', response.data);
+        setDoctor(null);
+      }
     } catch (error) {
       console.error('Error fetching doctor:', error);
+      setDoctor(null);
     } finally {
       setLoading(false);
     }
@@ -80,7 +90,7 @@ const BookAppointment = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-600 text-lg">Doctor not found</p>
+          <p className="text-red-600 text-lg font-semibold">Doctor not found or unavailable.</p>
         </div>
       </div>
     );
