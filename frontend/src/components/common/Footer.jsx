@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from "../../assets/logo.jpg"
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-12 px-4 mt-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="px-4 py-12 mt-20 text-white bg-gray-900">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Logo and Description */}
           <div>
-            <img src="/logo.jpg" alt="MediConnect Logo" className="mb-4 w-40" />
+            <img src={logo} alt="MediConnect Logo" className="w-40 mb-4" />
             <p className="text-gray-300">MediConnect is your trusted platform for booking doctor appointments and managing your healthcare online.</p>
           </div>
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="mb-4 text-lg font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-gray-300">
               <li>Home</li>
               <li>About Us</li>
@@ -23,7 +24,7 @@ const Footer = () => {
           </div>
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
+            <h4 className="mb-4 text-lg font-semibold">Contact</h4>
             <div className="space-y-2 text-gray-300">
               <p>Email: info@mediconnect.com</p>
               <p>Phone: +1 234 567 8900</p>
@@ -32,7 +33,7 @@ const Footer = () => {
           </div>
         </div>
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+        <div className="pt-8 mt-8 text-center border-t border-gray-700">
           <p className="text-gray-300">
             © 2024 MediConnect. All rights reserved.
           </p>
