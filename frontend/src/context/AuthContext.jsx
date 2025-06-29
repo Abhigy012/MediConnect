@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../config/axios';
 
 const AuthContext = createContext();
 
@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       getUserProfile();
     } else {
       setLoading(false);
@@ -27,12 +26,11 @@ export const AuthProvider = ({ children }) => {
 
   const getUserProfile = async () => {
     try {
-      const response = await axios.get('/api/auth/profile');
+      const response = await api.get('/auth/profile');
       setUser(response.data.data.user);
     } catch (error) {
       console.error('Profile fetch error:', error);
       localStorage.removeItem('token');
-      delete axios.defaults.headers.common['Authorization'];
     } finally {
       setLoading(false);
     }
@@ -40,7 +38,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password, role) => {
     try {
-      const response = await axios.post('/api/auth/login', {
+      const response = await api.post('/auth/login', {
         email,
         password,
         role
@@ -48,7 +46,6 @@ export const AuthProvider = ({ children }) => {
 
       const { token, user } = response.data.data;
       localStorage.setItem('token', token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser(user);
 
       return { success: true };
@@ -63,12 +60,11 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData, role) => {
     try {
-      const response = await axios.post(`/api/auth/register/${role}`, userData);
+      const response = await api.post(`/auth/register/${role}`, userData);
       
       if (response.data.data.token) {
         const { token, user } = response.data.data;
         localStorage.setItem('token', token);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         setUser(user);
       }
 
@@ -83,13 +79,12 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
     setUser(null);
   };
 
   const updateProfile = async (profileData) => {
     try {
-      const response = await axios.put('/api/auth/profile', profileData);
+      const response = await api.put('/auth/profile', profileData);
       setUser(response.data.data.user);
       return { success: true, message: 'Profile updated successfully' };
     } catch (error) {

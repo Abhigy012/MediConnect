@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import api from '../config/axios';
 
 const PaymentModal = ({ appointment, isOpen, onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
@@ -10,17 +11,13 @@ const PaymentModal = ({ appointment, isOpen, onClose, onSuccess }) => {
     setLoading(true);
     setError(null);
     try {
-      const token = localStorage.getItem('token');
-      const response = await fetch('/api/payments/create-order', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ appointmentId: appointment._id })
+      const response = await api.post('/payments/create-order', {
+        appointmentId: appointment._id
       });
-      const data = await response.json();
+      
+      const data = response.data;
       if (!data.success) throw new Error(data.message);
+      
       const { order } = data;
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
@@ -31,20 +28,14 @@ const PaymentModal = ({ appointment, isOpen, onClose, onSuccess }) => {
         order_id: order.id,
         handler: async function (response) {
           // Verify payment on backend
-          const verifyRes = await fetch('/api/payments/verify-payment', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({
-              appointmentId: appointment._id,
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature
-            })
+          const verifyRes = await api.post('/payments/verify-payment', {
+            appointmentId: appointment._id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature
           });
-          const verifyData = await verifyRes.json();
+          
+          const verifyData = verifyRes.data;
           if (verifyData.success) {
             onSuccess();
           } else {

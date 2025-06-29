@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import api from '../config/axios';
 import heroImage from '../assets/hero-image.png'; // Add your image here
 
 const doctorImages = [
@@ -23,8 +24,8 @@ const Home = () => {
     // Fetch top 5 experienced doctors
     const fetchDoctors = async () => {
       try {
-        const res = await fetch('/api/doctors');
-        const data = await res.json();
+        const res = await api.get('/doctors');
+        const data = res.data;
         if (data.success && data.data && data.data.doctors) {
           // Sort by experience (desc), fallback to rating if needed
           const sorted = [...data.data.doctors].sort((a, b) => (b.experience || 0) - (a.experience || 0));

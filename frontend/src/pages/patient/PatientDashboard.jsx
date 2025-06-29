@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import api from '../../config/axios';
 
 const PatientDashboard = () => {
   const { user } = useAuth();
@@ -10,26 +11,12 @@ const PatientDashboard = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const response = await api.get('/appointments/');
         
-        const response = await fetch('/api/appointments/', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setAppointments(data.data?.appointments || []);
-          } else {
-            console.error('Failed to fetch appointments:', data.message);
-            setAppointments([]);
-          }
+        if (response.data.success) {
+          setAppointments(response.data.data?.appointments || []);
         } else {
-          const errorData = await response.json().catch(() => ({}));
-          console.error('Failed to fetch appointments:', errorData);
+          console.error('Failed to fetch appointments:', response.data.message);
           setAppointments([]);
         }
       } catch (error) {
