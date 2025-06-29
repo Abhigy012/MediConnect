@@ -11,7 +11,7 @@ const doctorImages = [
 ];
 
 // Updated hero image to team of doctors with transparent background
-const HERO_IMAGE = '/doctors.png';
+const HERO_IMAGE = './doctors.png';
 
 const Home = () => {
   const { user } = useAuth();
@@ -56,7 +56,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Optimized Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white overflow-hidden">
+      <section className="relative overflow-hidden text-white bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -64,12 +64,12 @@ const Home = () => {
           }}></div>
         </div>
 
-        <div className="container mx-auto relative z-10">
+        <div className="container relative z-10 mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between min-h-[80vh] lg:min-h-[90vh] px-4 lg:px-8">
             {/* Left: Content */}
-            <div className="w-full lg:w-1/2 py-16 lg:py-0 text-center lg:text-left flex flex-col items-center lg:items-start space-y-8">
+            <div className="flex flex-col items-center w-full py-16 space-y-8 text-center lg:w-1/2 lg:py-0 lg:text-left lg:items-start">
               {/* Trust Badge */}
-              <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium">
+              <div className="flex items-center px-4 py-2 space-x-2 text-sm font-medium rounded-full bg-white/10 backdrop-blur-sm">
                 <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
@@ -78,32 +78,32 @@ const Home = () => {
 
               {/* Main Heading */}
               <div className="space-y-4">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl">
                   <span className="block">Your Health,</span>
                   <span className="block text-blue-200">Our Priority</span>
                 </h1>
-                <p className="text-lg sm:text-xl lg:text-2xl text-blue-100 max-w-2xl leading-relaxed">
+                <p className="max-w-2xl text-lg leading-relaxed text-blue-100 sm:text-xl lg:text-2xl">
                   Connect with verified doctors and book appointments instantly.
                   Experience healthcare that puts you first.
                 </p>
               </div>
 
               {/* Key Benefits */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+              <div className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-3">
                 <div className="flex items-center space-x-2">
-                  <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span>Instant Booking</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span>Verified Doctors</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span>24/7 Support</span>
@@ -111,7 +111,7 @@ const Home = () => {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <div className="flex flex-col w-full gap-4 sm:flex-row sm:w-auto">
                 {user ? (
                   <>
                     {user.role === 'patient' ? (
@@ -120,7 +120,7 @@ const Home = () => {
                         className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-white/20"
                       >
                         <span>Book Appointment</span>
-                        <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </Link>
@@ -130,7 +130,7 @@ const Home = () => {
                         className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-white/20"
                       >
                         <span>View Appointments</span>
-                        <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                         </svg>
                       </Link>
@@ -138,10 +138,10 @@ const Home = () => {
                     <Link
                       to={user.role === 'patient' ? '/patient/dashboard' :
                         user.role === 'doctor' ? '/doctor/dashboard' : '/admin/dashboard'}
-                      className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 rounded-xl backdrop-blur-sm hover:bg-white hover:text-blue-600 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-white/20"
+                      className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-200 border-2 group border-white/30 rounded-xl backdrop-blur-sm hover:bg-white hover:text-blue-600 focus:outline-none focus:ring-4 focus:ring-white/20"
                     >
                       <span>Go to Dashboard</span>
-                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </Link>
@@ -153,16 +153,16 @@ const Home = () => {
                       className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-white/20"
                     >
                       <span>Get Started</span>
-                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     </Link>
                     <Link
                       to="/register"
-                      className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 rounded-xl backdrop-blur-sm hover:bg-white hover:text-blue-600 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-white/20"
+                      className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-200 border-2 group border-white/30 rounded-xl backdrop-blur-sm hover:bg-white hover:text-blue-600 focus:outline-none focus:ring-4 focus:ring-white/20"
                     >
                       <span>Register Now</span>
-                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                       </svg>
                     </Link>
@@ -184,7 +184,7 @@ const Home = () => {
                         key={i}
                         src={imageUrl}
                         alt={`Active patient ${i + 1}`}
-                        className="w-8 h-8 rounded-full border-2 border-blue-600 object-cover"
+                        className="object-cover w-8 h-8 border-2 border-blue-600 rounded-full"
                       />
                     ))}
                   </div>
@@ -204,10 +204,10 @@ const Home = () => {
             </div>
 
             {/* Right: Hero Image */}
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+            <div className="flex justify-center w-full lg:w-1/2 lg:justify-end">
               <div className="relative w-full max-w-lg">
                 {/* Main Image */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="relative overflow-hidden transition-transform duration-500 transform shadow-2xl rounded-2xl rotate-3 hover:rotate-0">
                   <img
                     src={HERO_IMAGE}
                     alt="Team of healthcare professionals"
@@ -217,9 +217,9 @@ const Home = () => {
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute -top-4 -right-4 bg-white rounded-xl p-4 shadow-lg">
+                <div className="absolute p-4 bg-white shadow-lg -top-4 -right-4 rounded-xl">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-full">
                       <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -231,9 +231,9 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-lg">
+                <div className="absolute p-4 bg-white shadow-lg -bottom-4 -left-4 rounded-xl">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full">
                       <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
@@ -250,7 +250,7 @@ const Home = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute transform -translate-x-1/2 bottom-8 left-1/2 animate-bounce">
           <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
@@ -260,10 +260,10 @@ const Home = () => {
       {/* Doctor Carousel Section */}
       <section className="py-12 bg-white">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8">Meet Our Experienced Doctors</h2>
+          <h2 className="mb-8 text-3xl font-bold text-center">Meet Our Experienced Doctors</h2>
           <div
             ref={carouselRef}
-            className="flex overflow-x-auto gap-6 pb-4 px-2 md:px-0 scrollbar-hide snap-x snap-mandatory"
+            className="flex gap-6 px-2 pb-4 overflow-x-auto md:px-0 scrollbar-hide snap-x snap-mandatory"
             style={{ scrollBehavior: 'smooth' }}
           >
             {doctors.length === 0 ? (
@@ -277,11 +277,11 @@ const Home = () => {
                   <img
                     src={doc.profilePicture || doc.imageUrl || 'https://res.cloudinary.com/demo/image/upload/v1312461204/sample.jpg'}
                     alt={doc.name}
-                    className="w-24 h-24 rounded-full object-cover border-4 border-white shadow mb-3 group-hover:scale-105 transition-transform"
+                    className="object-cover w-24 h-24 mb-3 transition-transform border-4 border-white rounded-full shadow group-hover:scale-105"
                   />
-                  <h3 className="text-lg font-bold text-blue-900 mb-1 text-center">{doc.name}</h3>
-                  <p className="text-blue-600 font-medium mb-1 text-center">{doc.specialization}</p>
-                  <p className="text-gray-700 text-sm mb-1 text-center">{doc.experience} years experience</p>
+                  <h3 className="mb-1 text-lg font-bold text-center text-blue-900">{doc.name}</h3>
+                  <p className="mb-1 font-medium text-center text-blue-600">{doc.specialization}</p>
+                  <p className="mb-1 text-sm text-center text-gray-700">{doc.experience} years experience</p>
                 </div>
               ))
             )}
@@ -292,37 +292,37 @@ const Home = () => {
       {/* Features Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose MediConnect?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <h2 className="mb-12 text-3xl font-bold text-center">Why Choose MediConnect?</h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="p-6 text-center">
+              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full">
                 <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Easy Booking</h3>
+              <h3 className="mb-2 text-xl font-semibold">Easy Booking</h3>
               <p className="text-gray-600">
                 Book appointments with your preferred doctors in just a few clicks.
               </p>
             </div>
-            <div className="text-center p-6">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="p-6 text-center">
+              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full">
                 <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Verified Doctors</h3>
+              <h3 className="mb-2 text-xl font-semibold">Verified Doctors</h3>
               <p className="text-gray-600">
                 All our doctors are verified and have proper medical licenses.
               </p>
             </div>
-            <div className="text-center p-6">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="p-6 text-center">
+              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-full">
                 <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Quick Service</h3>
+              <h3 className="mb-2 text-xl font-semibold">Quick Service</h3>
               <p className="text-gray-600">
                 Get quick access to healthcare services when you need them most.
               </p>
@@ -332,31 +332,31 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 text-white bg-blue-600">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-8">
+          <h2 className="mb-4 text-3xl font-bold">Ready to Get Started?</h2>
+          <p className="mb-8 text-xl">
             Join thousands of patients who trust MediConnect for their healthcare needs.
           </p>
           {user ? (
             user.role === 'patient' ? (
               <Link
                 to="/patient/doctors"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+                className="px-8 py-3 font-semibold text-blue-600 transition bg-white rounded-lg hover:bg-gray-100"
               >
                 Book Appointment
               </Link>
             ) : user.role === 'doctor' ? (
               <Link
                 to="/doctor/appointments"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+                className="px-8 py-3 font-semibold text-blue-600 transition bg-white rounded-lg hover:bg-gray-100"
               >
                 View Appointments
               </Link>
             ) : (
               <Link
                 to="/admin/dashboard"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+                className="px-8 py-3 font-semibold text-blue-600 transition bg-white rounded-lg hover:bg-gray-100"
               >
                 Go to Dashboard
               </Link>
@@ -364,7 +364,7 @@ const Home = () => {
           ) : (
             <Link
               to="/register"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+              className="px-8 py-3 font-semibold text-blue-600 transition bg-white rounded-lg hover:bg-gray-100"
             >
               Register Today
             </Link>
