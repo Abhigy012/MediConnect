@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { assets } from '../../assets/assets';
 
 const Footer = () => {
   return (
@@ -9,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and Description */}
           <div>
-            <img src={assets.logo} alt="MediConnect Logo" className="mb-4 w-40" />
+            <img src="/logo.jpg" alt="MediConnect Logo" className="mb-4 w-40" />
             <p className="text-gray-300">MediConnect is your trusted platform for booking doctor appointments and managing your healthcare online.</p>
           </div>
           {/* Quick Links */}
