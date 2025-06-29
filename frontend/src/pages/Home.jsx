@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import heroImage from '../assets/hero-image.png'; // Add your image here
 
 const doctorImages = [
   'https://res.cloudinary.com/dbeartopf/image/upload/v1751187647/mediconnect/doctors/doctor-1-1751187644919.jpg',
@@ -11,7 +12,7 @@ const doctorImages = [
 ];
 
 // Updated hero image to team of doctors with transparent background
-const HERO_IMAGE = './doctors.png';
+const HERO_IMAGE = heroImage;
 
 const Home = () => {
   const { user } = useAuth();
