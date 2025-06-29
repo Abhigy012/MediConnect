@@ -30,6 +30,23 @@ app.use('/api/doctors', doctorRoutes);
 app.use('/api/admin', adminRoutes);
 // app.use('/api/payments', paymentRoutes);
 
+// Root API route
+app.get('/api', (req, res) => {
+  res.json({
+    success: true,
+    message: 'MediConnect API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      doctors: '/api/doctors',
+      appointments: '/api/appointments',
+      admin: '/api/admin'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Health check route
 app.get('/api/health', (req, res) => {
   res.json({ 
