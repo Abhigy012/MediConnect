@@ -59,29 +59,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (userData, role) => {
-    console.log('🔐 Starting registration for role:', role);
-    console.log('📝 User data:', userData);
-    
     try {
       const response = await api.post(`/auth/register/${role}`, userData);
-      console.log('✅ Registration response:', response.data);
-      
       if (response.data.data.token) {
         const { token, user } = response.data.data;
         localStorage.setItem('token', token);
         setUser(user);
-        console.log('🎉 User registered and logged in successfully');
       }
-
       return { success: true, message: response.data.message };
     } catch (error) {
-      console.error('❌ Registration error:', {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-        url: error.config?.url
-      });
-      
       return {
         success: false,
         message: error.response?.data?.message || 'Registration failed'

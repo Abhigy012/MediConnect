@@ -34,6 +34,7 @@ const DoctorSearch = () => {
       if (city) params.append('city', city);
 
       const response = await axios.get(`/api/doctors?${params}`);
+      console.log('Raw API response:', response);
       
       // Handle different response structures
       let doctorsData = [];
@@ -46,10 +47,13 @@ const DoctorSearch = () => {
       } else {
         doctorsData = [];
       }
-      
+      console.log('Processed doctorsData:', doctorsData);
       setDoctors(doctorsData);
     } catch (error) {
       console.error('Error fetching doctors:', error);
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+      }
       setDoctors([]);
     } finally {
       setLoading(false);
