@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../config/axios';
 
 const DoctorSearch = () => {
   const [doctors, setDoctors] = useState([]);
@@ -32,11 +32,11 @@ const DoctorSearch = () => {
       const params = new URLSearchParams();
       if (specialization) params.append('specialization', specialization);
       if (city) params.append('city', city);
-      const requestUrl = `/api/doctors?${params}`;
+      const requestUrl = `/doctors?${params}`;
       console.log('Fetching doctors from:', requestUrl);
       console.log('Specialization:', specialization, 'City:', city);
 
-      const response = await axios.get(requestUrl);
+      const response = await api.get(requestUrl);
       console.log('Raw API response:', response);
       console.log('Response status:', response.status);
       console.log('Response data:', response.data);
