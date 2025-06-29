@@ -49,7 +49,7 @@ const MyProfile = () => {
 
             image && formData.append('image', image)
 
-            const endpoint = user?.role === 'doctor' ? '/api/doctors/profile' : '/api/auth/profile'
+            const endpoint = user?.role === 'doctor' ? '/doctors/profile' : '/auth/profile'
             const { data } = await api.put(endpoint, formData, { headers: { token } })
 
             if (data.success) {
