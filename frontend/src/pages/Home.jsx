@@ -11,7 +11,7 @@ const doctorImages = [
 ];
 
 // Updated hero image to team of doctors with transparent background
-const HERO_IMAGE = '/doctors.png';
+const HERO_IMAGE = 'https://drive.google.com/file/d/1cRoUBOU_W1Su4n_Z7O0fld4jXBFYVgFZ/view?usp=sharing';
 
 const Home = () => {
   const { user } = useAuth();
