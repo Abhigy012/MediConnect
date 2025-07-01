@@ -339,8 +339,8 @@ This project is licensed under the MIT License.
 ## 👤 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@Abhigy012](https://github.com/Abhigy012)
+- LinkedIn: [Abhay Goyal](https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/abhay--goyal/))
 
 ## 🙏 Acknowledgments
 
